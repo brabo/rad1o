@@ -1,0 +1,45 @@
+toolchain install
+
+apt-get install apt-src \
+p7zip-full \
+gawk \
+gzip \
+perl \
+autoconf \
+m4 \
+automake \
+libtool \
+libncurses5-dev \
+mingw-w64 \
+gettext \
+gperf \
+dejagnu \
+expect \
+tcl \
+autogen \
+guile-1.8 \
+flex \
+flip \
+bison \
+tofrodos \
+texinfo \
+g++ \
+gcc-multilib \
+libgmp3-dev \
+libmpfr-dev \
+debhelper \
+texlive \
+texlive-extra-utils
+
+cd src
+mkdir toolchain
+cd toolchain
+wget https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q1-update/+download/gcc-arm-none-eabi-4_9-2015q1-20150306-src.tar.bz2
+tar xvjf gcc-arm-none-eabi-4_9-2015q1-20150306-src.tar.bz2
+cd gcc-arm-none-eabi-4_9-2015q1-20150306/src/
+find . -name '*.tar.bz2' -exec tar xvjf {} \;
+find . -name '*.tar.gz' -exec tar xvzf {} \;
+./build-prerequisites.sh
+./build-toolchain.sh
+add ~/src/toolchain/gcc-arm-none-eabi-4_9-2015q1-20150306/install-native/bin to your PATH
+
